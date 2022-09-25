@@ -1,10 +1,9 @@
 import { ConfigurationVariableValue, Release } from 'azure-devops-node-api/interfaces/ReleaseInterfaces';
+import { createWebApi, setReleaseVariableFromApi } from './api';
 import { debug, getVariable, setVariable } from 'azure-pipelines-task-lib';
 
-import { IReleaseApi } from 'azure-devops-node-api/ReleaseApi';
 import { IRequestOptions } from 'azure-devops-node-api/interfaces/common/VsoBaseInterfaces';
 import { WebApi } from 'azure-devops-node-api';
-import { createWebApi } from './api';
 
 export function isVariable(name: string): boolean {
   return !!getVariable(name);
@@ -43,23 +42,15 @@ export async function setReleaseVariable(
 ): Promise<Release> {
   try {
     const webApi: WebApi = getWebApi();
-    const releaseApi: IReleaseApi = await webApi.getReleaseApi();
     const project: string = getProject();
-    setVariable(variableName, variableValue);
-    const release: Release = await releaseApi.getRelease(project, releaseId);
-
     const variableConfiguration: ConfigurationVariableValue = {
       allowOverride,
       isSecret,
       value: variableValue
     };
 
-    if (release.variables) {
-      release.variables[variableName] = variableConfiguration;
-      return await releaseApi.updateRelease(release, project, Number(releaseId));
-    } else {
-      throw new Error('Variables is undefined');
-    }
+    setVariable(variableName, variableValue, isSecret);
+    return await setReleaseVariableFromApi(webApi, project, releaseId, variableName, variableConfiguration);
   } catch (error: any) {
     throw new Error(error.message);
   }
