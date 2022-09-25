@@ -3,6 +3,7 @@ Library with useful functionalities for azure devops tasks
 
 - Create client
 - Update variable
+- retries
 - etc
 
 ````
@@ -31,7 +32,7 @@ async function sample() {
 
 To do local tests export the variable with a personal access token
 
-export SYSTEM_ACCESSTOKEN_LOCAL=xxxxx
+export SYSTEM_ACCESSTOKEN=xxxxx
 
 Nota: In Azure DevOps you must activate the option to use auth script in the agents
 

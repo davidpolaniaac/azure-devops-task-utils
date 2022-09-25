@@ -1,22 +1,17 @@
 {
   "name": "azure-devops-task-utils",
-  "version": "3.0.1",
-  "description": "Library to create tasks of azure devops",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "4.0.0",
+  "description": "Utility library for Azure DevOps tasks",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist/**/*"
+    "lib/**/*"
   ],
   "scripts": {
-    "test": " echo test run ",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "prebuild": "rimraf ./lib",
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -26,26 +21,27 @@
     "azure",
     "devops",
     "tasks",
-    "utlis"
+    "utils"
   ],
   "author": "David Polania",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/davidpolaniaac/azure-devops-task-utils/issues"
   },
   "homepage": "https://github.com/davidpolaniaac/azure-devops-task-utils.git#readme",
   "dependencies": {
-    "azure-devops-node-api": "^9.0.1",
-    "azure-pipelines-task-lib": "^2.9.5"
+    "azure-devops-node-api": "^11.2.0",
+    "azure-pipelines-task-lib": "^3.3.1"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.14",
-    "@types/node": "^10.14.9",
-    "jest": "^26.6.3",
-    "prettier": "^1.18.2",
-    "ts-jest": "^26.5.1",
-    "tslint": "^5.17.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.5.2"
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3"
   }
 }
