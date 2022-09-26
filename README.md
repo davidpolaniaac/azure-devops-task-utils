@@ -38,9 +38,13 @@ async function sample() {
 
 ````
 
-To do local tests export the variable with a personal access token
+To do local tests export the variables y en la variable 'SYSTEM_ACCESSTOKEN' a personal access token
 
 export SYSTEM_ACCESSTOKEN=xxxxx
+
+export SYSTEM_TEAMPROJECTID=xxxxx-xxx-xx
+
+export SYSTEM_TEAMFOUNDATIONCOLLECTIONURI=https://dev.azure.com/xxxxxxxx/
 
 Nota: In Azure DevOps you must activate the option to use auth script in the agents
 
