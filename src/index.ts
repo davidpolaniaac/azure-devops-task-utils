@@ -1,3 +1,3 @@
-export { setReleaseVariableFromApi, createWebApi } from './api';
+export { setReleaseVariableFromApi, createWebApi, testConnection } from './api';
 export { isVariable, getVariableRequired, getProject, getWebApi, setReleaseVariable } from './task';
-export { banner, heading } from './utils';
+export { banner, heading, retryFunction, retryPromise } from './utils';

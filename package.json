@@ -23,7 +23,7 @@
     "tasks",
     "utils"
   ],
-  "author": "David Polania",
+  "author": "davidpolaniaac",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/davidpolaniaac/azure-devops-task-utils/issues"
@@ -31,7 +31,8 @@
   "homepage": "https://github.com/davidpolaniaac/azure-devops-task-utils.git#readme",
   "dependencies": {
     "azure-devops-node-api": "^11.2.0",
-    "azure-pipelines-task-lib": "^3.3.1"
+    "azure-pipelines-task-lib": "^3.3.1",
+    "polallel": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",

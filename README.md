@@ -6,6 +6,14 @@ Library with useful functionalities for azure devops tasks
 - retries
 - etc
 
+# Usage
+
+```sh-session
+$ npm install --save azure-devops-task-utils
+...
+
+```
+
 ````
 import * as common from 'azure-devops-task-utils';
 import * as nodeApi from 'azure-devops-node-api';
