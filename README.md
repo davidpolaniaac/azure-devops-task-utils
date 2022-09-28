@@ -24,12 +24,12 @@ async function sample() {
     common.heading('Title');
 
 
-    const webApi: nodeApi.WebApi = await common.getWebApi();
+    const webApi: nodeApi.WebApi = common.getWebApi();
     const gitApi: GitApi.IGitApi = await webApi.getGitApi();
     const project: string = common.getProject();
 
     ///
-    gitApi.
+    await gitApi.
     .
     .
     .
