@@ -20,6 +20,8 @@
     },
     "ignorePatterns": [
       "dist", 
-      "lib"
+      "lib",
+      "jest.config.js",
+      "*.test.ts"
     ]
   }

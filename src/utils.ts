@@ -1,4 +1,4 @@
-export { retryFunction, retryPromise } from 'polallel/lib/retry';
+export { retryFunction, retryPromise } from 'polallel';
 
 export function banner(title: string): void {
   console.log();

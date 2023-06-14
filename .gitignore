@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/node,typings,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,typings,visualstudiocode
+## task
+.taskkey
 ## typescript compilation 
 /lib
 /dist

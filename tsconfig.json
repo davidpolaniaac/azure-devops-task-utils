@@ -2,23 +2,15 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "rootDir": "./src",
-    "baseUrl": "./src",
-    "outDir": "./lib",
+    "rootDir": "src",
+    "outDir": "lib",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node", "jest"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }
