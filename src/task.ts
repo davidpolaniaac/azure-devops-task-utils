@@ -52,6 +52,6 @@ export async function setReleaseVariable(
     setVariable(variableName, variableValue, isSecret);
     return await setReleaseVariableFromApi(webApi, project, releaseId, variableName, variableConfiguration);
   } catch (error: any) {
-    throw new Error(error.message);
+    throw new Error(error.message, { cause: error });
   }
 }

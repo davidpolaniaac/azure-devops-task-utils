@@ -54,7 +54,7 @@ describe('getVariableRequired', () => {
     console.log = jest.fn();
     console.error = jest.fn();
 
-    expect(() => getVariableRequired(mockVariableName)).toThrowError('Variable required: VAR_NAME');
+    expect(() => getVariableRequired(mockVariableName)).toThrow('Variable required: VAR_NAME');
     expect(getVariable).toHaveBeenCalledWith(mockVariableName);
     expect(console.log).toHaveBeenCalled();
     expect(console.error).toHaveBeenCalled();
@@ -67,7 +67,7 @@ describe('getVariableRequired', () => {
     console.log = jest.fn();
     console.error = jest.fn();
 
-    expect(() => getVariableRequired(mockVariableName, mockCustomMessage)).toThrowError('Variable required: VAR_NAME');
+    expect(() => getVariableRequired(mockVariableName, mockCustomMessage)).toThrow('Variable required: VAR_NAME');
     expect(getVariable).toHaveBeenCalledWith(mockVariableName);
     expect(console.log).toHaveBeenCalledWith(mockCustomMessage);
     expect(console.error).toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe('getWebApi', () => {
     (createWebApi as jest.Mock).mockReturnValue('mock-web-api');
 
     const result = getWebApi({});
-        
+
     expect(getVariable).toHaveBeenCalledWith('SYSTEM_TEAMFOUNDATIONCOLLECTIONURI');
 
     expect(createWebApi).toHaveBeenCalledWith(mock, mock, {});
@@ -147,8 +147,8 @@ describe('setReleaseVariable', () => {
     (setVariable as jest.Mock).mockReturnValue(undefined);
     (setReleaseVariableFromApi as jest.Mock).mockRejectedValue(mockError);
 
-    await expect(() => setReleaseVariable(mockReleaseId, mockVariableName, mockVariableValue)).rejects.toThrowError(
-      mockError
+    await expect(setReleaseVariable(mockReleaseId, mockVariableName, mockVariableValue)).rejects.toThrow(
+      mockError.message
     );
 
     expect(createWebApi).toHaveBeenCalled();

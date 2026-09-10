@@ -25,7 +25,7 @@ describe('testConnection', () => {
     const logSpy = jest.spyOn(global.console, 'log');
 
     const result = await testConnection(mockWebApi);
-    
+
     expect(mockWebApi.connect).toHaveBeenCalled();
     expect(result).toBe(mockConnData);
     expect(logSpy).toHaveBeenCalledWith(`Hello ${mockName}`);
@@ -36,7 +36,7 @@ describe('createWebApi', () => {
   it('should create a WebApi instance', () => {
     const mockServerUrl = 'https://example.com';
     const mockToken = 'mock-token';
-    const mockAuthHandler : any = jest.fn();
+    const mockAuthHandler: any = jest.fn();
 
     const handler = jest.spyOn(azureApi, 'getHandlerFromToken').mockImplementation(() => mockAuthHandler);
 
@@ -51,9 +51,11 @@ describe('createWebApi', () => {
     const mockServerUrl = 'https://example.com';
     const mockToken = 'mock-token';
 
-    const handler = jest.spyOn(azureApi, 'getHandlerFromToken').mockImplementation(() => {throw mockError});
+    const handler = jest.spyOn(azureApi, 'getHandlerFromToken').mockImplementation(() => {
+      throw mockError;
+    });
 
-    expect(() => createWebApi(mockServerUrl, mockToken, {})).toThrowError(mockError);
+    expect(() => createWebApi(mockServerUrl, mockToken, {})).toThrow(mockError.message);
     expect(handler).toHaveBeenCalledWith(mockToken);
   });
 });
@@ -105,7 +107,7 @@ describe('setReleaseVariableFromApi', () => {
       getReleaseApi: jest.fn(() => Promise.resolve(mockReleaseApi))
     };
 
-    await expect(() =>
+    await expect(
       setReleaseVariableFromApi(
         mockWebApi as any,
         mockProject,
@@ -113,7 +115,7 @@ describe('setReleaseVariableFromApi', () => {
         mockVariableName,
         mockConfigurationVariable
       )
-    ).rejects.toThrowError('Variables is undefined');
+    ).rejects.toThrow('Variables is undefined');
 
     expect(mockWebApi.getReleaseApi).toHaveBeenCalled();
     expect(mockReleaseApi.getRelease).toHaveBeenCalledWith(mockProject, mockReleaseId);
@@ -132,7 +134,7 @@ describe('setReleaseVariableFromApi', () => {
       getReleaseApi: jest.fn(() => Promise.resolve(mockReleaseApi))
     };
 
-    await expect(() =>
+    await expect(
       setReleaseVariableFromApi(
         mockWebApi as any,
         mockProject,
@@ -140,7 +142,7 @@ describe('setReleaseVariableFromApi', () => {
         mockVariableName,
         mockConfigurationVariable
       )
-    ).rejects.toThrowError(mockError);
+    ).rejects.toThrow(mockError.message);
 
     expect(mockWebApi.getReleaseApi).toHaveBeenCalled();
     expect(mockReleaseApi.getRelease).toHaveBeenCalledWith(mockProject, mockReleaseId);

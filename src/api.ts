@@ -18,7 +18,7 @@ export function createWebApi(serverUrl: string, token: string, apiOptions?: IReq
     const webApi: WebApi = new WebApi(serverUrl, authHandler, apiOptions);
     return webApi;
   } catch (err: any) {
-    throw new Error(err.message);
+    throw new Error(err.message, { cause: err });
   }
 }
 
@@ -40,6 +40,6 @@ export async function setReleaseVariableFromApi(
       throw new Error('Variables is undefined');
     }
   } catch (error: any) {
-    throw new Error(error.message);
+    throw new Error(error.message, { cause: error });
   }
 }
